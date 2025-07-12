@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    Options -Multiviews
+    RewriteEngine On
+    RewriteBase /Project/app/public
+    
+    # Izinkan akses langsung ke file CSS, JS, dan gambar
+    RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|eot)$
+    
+    # Jangan rewrite jika file atau direktori ada
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    
+    # Rewrite semua request lain ke index.php
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule> 

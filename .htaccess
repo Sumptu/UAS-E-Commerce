@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /Project/
+    
+    # Redirect semua request ke app/public
+    RewriteCond %{REQUEST_URI} !^/Project/app/public/
+    RewriteRule ^(.*)$ app/public/$1 [L]
+</IfModule> 
